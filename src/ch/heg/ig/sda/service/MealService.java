@@ -4,6 +4,7 @@ import ch.heg.ig.sda.business.*;
 import ch.heg.ig.sda.datastructure.ArrayList;
 
 public class MealService implements IMealService {
+
     private ArrayList<Meal> meals;
 
     public MealService() {
@@ -46,7 +47,7 @@ public class MealService implements IMealService {
     }
 
     @Override
-    public void removeFoodFromMeal(Meal meal, Food food) throws FoodNotFoundException {
+    public void removeFoodFromMeal(Meal meal, Food food) {
         meal.removeFood(food);
     }
 
