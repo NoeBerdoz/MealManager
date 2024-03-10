@@ -8,10 +8,11 @@ public interface IMealService {
     // TODO Polymorphisme
     // TODO Check everything according to the consignes
     ArrayList<Meal> getMeals();
+    Meal getMeal(int index);
     void addMeal(Meal meal);
-    void removeMeal(Meal meal) throws MealNotFoundException;
+    void removeMeal(Meal meal);
 
-    void modifyMeal(Meal meal, int choice);
+    void changeMealName(Meal meal, String newName) throws InvalidMealNameException;
     void addFoodToMeal(Meal meal, Food food);
     void removeFoodFromMeal(Meal meal, Food food) throws FoodNotFoundException;
 

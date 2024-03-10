@@ -2,8 +2,8 @@ package ch.heg.ig.sda.business;
 
 public class Dinner extends Meal {
 
-    public Dinner(String name) {
-        super(name);
+    public Dinner() {
+
     }
 
     @Override

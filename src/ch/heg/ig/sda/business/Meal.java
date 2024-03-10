@@ -6,8 +6,7 @@ public abstract class Meal {
     private String name;
     private ArrayList<Food> foods;
 
-    public Meal(String name) {
-        this.name = name;
+    public Meal() {
         this.foods = new ArrayList<Food>();
     }
 
@@ -19,7 +18,15 @@ public abstract class Meal {
         return foods;
     }
 
-    public void setName(String name) {
+    public Food getFood(int foodIndex) {
+        return getFoods().get(foodIndex);
+    }
+
+    public void setName(String name) throws InvalidMealNameException {
+        // matches letters digits and whitespace characters only
+        if (!name.matches("[a-zA-Z0-9\\s]+")) {
+            throw new InvalidMealNameException("Invalid meal name: must contain only letters, digits, and whitespace.");
+        }
         this.name = name;
     }
 
@@ -27,7 +34,7 @@ public abstract class Meal {
         foods.add(food);
     }
 
-    public void removeFood(Food foodToRemove) throws FoodNotFoundException {
+    public void removeFood(Food foodToRemove) {
         for (int index = 0; index < foods.size(); index++) {
             Food food = foods.get(index);
             if (food.equals(foodToRemove)) {
@@ -35,7 +42,6 @@ public abstract class Meal {
                 return;
             }
         }
-        throw new FoodNotFoundException("food: \"" + foodToRemove.getName() + "\" not found in meal: \"" + getName() + "\"");
     }
 
     public Nutrient getTotalNutrients() {
@@ -75,20 +81,19 @@ public abstract class Meal {
     public String showFoods() {
         StringBuilder foodNames = new StringBuilder();
         for (int index = 0; index < getFoods().size(); index++) {
+            foodNames.append(index);
+            foodNames.append(". ");
             foodNames.append(getFoods().get(index).getName());
-
-            // Add a comma between food names
-            if (index < getFoods().size() - 1) {
-                foodNames.append(", ");
-            }
+            foodNames.append("\n");
         }
         return foodNames.toString();
     }
 
     public String showDataSummary() {
+        // TODO build this with StringBuilder
         return "Meal named " + getName() + " that contains " + getTotalCalories() + " calories\n"
                + getTotalProtein() + " protein\n"
                + getTotalCarbohydrates() + " carbohydrates\n"
-               + getTotalFats() + " fats";
+               + getTotalFats() + " fats\n";
     }
 }
