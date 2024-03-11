@@ -1,6 +1,8 @@
 package ch.heg.ig.sda.app;
+
 import ch.heg.ig.sda.business.*;
 import ch.heg.ig.sda.service.MealService;
+
 import java.util.Scanner;
 
 public class Main {

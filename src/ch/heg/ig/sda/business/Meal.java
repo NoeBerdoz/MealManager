@@ -4,14 +4,19 @@ import ch.heg.ig.sda.datastructure.ArrayList;
 
 /**
  * Abstract class representing a meal.
+ *
  * @author NoeBerdoz
  */
 public abstract class Meal {
 
-    /** The name of the meal. */
+    /**
+     * The name of the meal.
+     */
     private String name;
 
-    /** The list of foods in the meal. */
+    /**
+     * The list of foods in the meal.
+     */
     private ArrayList<Food> foods;
 
     /**
@@ -170,8 +175,8 @@ public abstract class Meal {
     public String showDataSummary() {
         // TODO build this with StringBuilder
         return "Meal named " + getName() + " that contains " + getTotalCalories() + " calories\n"
-               + getTotalProtein() + " protein\n"
-               + getTotalCarbohydrates() + " carbohydrates\n"
-               + getTotalFats() + " fats\n";
+                + getTotalProtein() + " protein\n"
+                + getTotalCarbohydrates() + " carbohydrates\n"
+                + getTotalFats() + " fats\n";
     }
 }

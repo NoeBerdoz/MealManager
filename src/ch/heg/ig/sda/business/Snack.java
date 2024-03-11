@@ -13,5 +13,4 @@ public class Snack extends Meal {
                 + getTotalCarbohydrates() + " carbohydrates\n"
                 + getTotalFats() + " fats";
     }
-
 }
