@@ -29,6 +29,8 @@ The **IMealService** interface is implemented by the **MealService** class, whic
 The **Main** class allows interaction with the ecosystem implemented by the previously presented classes. It displays a menu to the user and uses a Scanner to handle user input. 
 When a user attempts to modify a meal's name with a special character, the **Meal** class throws an **InvalidMealNameException** from the **setName()** method. This exception is then caught and thrown again from the **changeMealName()** method of the **MealService**. In **Main**, the error is handled by a try-catch statement, returning the user to the main menu.
 
+**InvalidMealNameException** inherits from the Java **Exception** class and calls the inherited constructor with the super statement.
+
 ## Software Architecture
 The file structure consists of three main layers: **app**, **business**, **service**, and an additional **datastructure** layer.
 
