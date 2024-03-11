@@ -1,25 +1,25 @@
 package ch.heg.ig.sda.datastructure;
 
 /**
- *
  * @author maximili.jeannere
  * ArrayList containing instances of type E with fixed size.
  */
 public class ArrayList<E> implements List<E> {
 
-    private static final int DEFAULT_CAPACITY=10;
+    private static final int DEFAULT_CAPACITY = 10;
 
     private E[] elements; // Array to store elements
     private int size = 0; // Number of elements
 
     // Constructors
 
-    public ArrayList( ) {
+    public ArrayList() {
         this(DEFAULT_CAPACITY);
     }
 
     /**
      * Constructor with given capacity.
+     *
      * @param capacity Capacity of the array
      */
     public ArrayList(int capacity) {
@@ -60,8 +60,8 @@ public class ArrayList<E> implements List<E> {
         // Check if the array has space left
         this.checkCapacity();
 
-        for(int j = this.size-1; j >= i; j--){ // Shift elements to the right, starting from the rightmost element.
-            this.elements[j+1] = this.elements[j];
+        for (int j = this.size - 1; j >= i; j--) { // Shift elements to the right, starting from the rightmost element.
+            this.elements[j + 1] = this.elements[j];
         }
 
         this.elements[i] = element; // Free space for the new element
@@ -81,11 +81,11 @@ public class ArrayList<E> implements List<E> {
 
         E temp = elements[i];
 
-        for(int j=i; j < size-1;j++){ // Shift elements to the left to fill the gap
-            elements[j] = elements[j+1];
+        for (int j = i; j < size - 1; j++) { // Shift elements to the left to fill the gap
+            elements[j] = elements[j + 1];
         }
 
-        elements[this.size-1] = null; // candidate for garbage collector
+        elements[this.size - 1] = null; // candidate for garbage collector
         this.size--;
 
         return temp;
@@ -93,16 +93,20 @@ public class ArrayList<E> implements List<E> {
 
     // Utilities
 
-    /** Checks if the given index is in the range [0, n].
-     IndexOutOfBoundsException is thrown to signal an invalid index argument. */
+    /**
+     * Checks if the given index is in the range [0, n].
+     * IndexOutOfBoundsException is thrown to signal an invalid index argument.
+     */
     protected void checkIndex(int i, int n) {
         if (i < 0 || i >= n)
             throw new IndexOutOfBoundsException("Illegal index: " + i);
     }
 
-    /** Checks if the array has available space.
-     IllegalStateException signals that a method has been invoked at an illegal or inappropriate time.*/
-    protected void checkCapacity(){
+    /**
+     * Checks if the array has available space.
+     * IllegalStateException signals that a method has been invoked at an illegal or inappropriate time.
+     */
+    protected void checkCapacity() {
         if (this.size() == elements.length)
             throw new IllegalStateException("Array is full");
     }
