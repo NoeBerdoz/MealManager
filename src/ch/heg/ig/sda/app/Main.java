@@ -95,8 +95,6 @@ public class Main {
                     Meal mealToRemove = mealService.getMeal(choiceMealToRemove);
                     mealService.removeMeal(mealToRemove);
 
-                    /* TODO Write on your documentation this case, as seen here the instance is not deleted as remove from array list doesn't delete it
-                       I'm wondering how Java's Garbage collector works then with the object when not in use? */
                     System.out.println("Meal " + "\"" + mealToRemove.getName() + "\"" + " removed successfully\n");
                     scanner.nextLine();
                     break;
