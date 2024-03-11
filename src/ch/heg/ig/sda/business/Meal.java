@@ -4,6 +4,7 @@ import ch.heg.ig.sda.datastructure.ArrayList;
 
 /**
  * Abstract class representing a meal.
+ * @author NoeBerdoz
  */
 public abstract class Meal {
 

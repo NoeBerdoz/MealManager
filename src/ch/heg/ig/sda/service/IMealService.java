@@ -5,6 +5,7 @@ import ch.heg.ig.sda.datastructure.ArrayList;
 
 /**
  * Interface responsible for managing meals.
+ * @author NoeBerdoz
  */
 public interface IMealService {
 

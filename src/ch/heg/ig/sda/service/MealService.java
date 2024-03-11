@@ -72,13 +72,14 @@ public class MealService implements IMealService {
     @Override
     public String showFoodsFromMeals() {
         StringBuilder allFoodsNames = new StringBuilder();
-        for (int index = 0; index < getMeals().size(); index++) {
-            allFoodsNames.append(getMeals().get(index).showFoods());
+        for (int indexMeal = 0; indexMeal < getMeals().size(); indexMeal++) {
 
-            // Add a comma between meal's foods names
-            if (index < getMeals().size() - 1) {
-                allFoodsNames.append(", ");
-            }
+            Meal currentMeal = getMeal(indexMeal);
+            allFoodsNames.append(currentMeal.getName());
+            allFoodsNames.append(":\n");
+            allFoodsNames.append(currentMeal.showFoods());
+            allFoodsNames.append(":\n");
+
         }
         return allFoodsNames.toString();
     }
