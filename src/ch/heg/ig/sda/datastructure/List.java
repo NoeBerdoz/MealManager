@@ -1,40 +1,61 @@
 package ch.heg.ig.sda.datastructure;
 
 /**
- *
  * @author maximili.jeannere
  */
 public interface List<E> {
-    
-    /** Retourne le nombre d'éléments stockés dans la liste.
-     * @return Nombre d'éléments dans la liste. */
-    int size( ); // (public abstract facultatifs)
-    
-    /** Retourne un booléen qui indique si la liste est vide.
-     * @return True si la liste est vide. */
-    boolean isEmpty( );
-    
-    /** Retourne l'élément à l'indice i.
-     * @param i Indice
-     * @return Instance de Person à l'indice i */
+
+    /**
+     * Returns the number of elements stored in the list.
+     *
+     * @return Number of elements in the list.
+     */
+    int size(); // (optional public abstract)
+
+    /**
+     * Returns a boolean indicating whether the list is empty.
+     *
+     * @return True if the list is empty.
+     */
+    boolean isEmpty();
+
+    /**
+     * Returns the element at index i.
+     *
+     * @param i Index
+     * @return Instance of Person at index i
+     */
     E get(int i) throws IndexOutOfBoundsException;
 
-    /** Remplace l'élément à l'indice i par une instance de Person et renvoie l'élément remplacé.
-     * @param i Indice
-     * @param element Instance de Person.
-     * @return  */
+    /**
+     * Replaces the element at index i with an instance of Person and returns the replaced element.
+     *
+     * @param i       Index
+     * @param element Instance of Person.
+     * @return The replaced element.
+     */
     E set(int i, E element);
-    
-    /** Insère un élément de type Person à l'indice i, en décalant les éléments suivants d'un indice.
-     * @param i Indice ou la personne est ajoutée.
-     * @param element Instance de Person. */
+
+    /**
+     * Inserts an element of type Person at index i, shifting subsequent elements by one index.
+     *
+     * @param i       Index where the person is added.
+     * @param element Instance of Person.
+     */
     void add(int i, E element);
 
+    /**
+     * Adds an element to the end of the list.
+     *
+     * @param element Instance of Person to add.
+     */
     void add(E element);
-    
-    /** Supprime et renvoie l'élément à l'indice i, en décalant les éléments suivants.
-     * @param i indice
-     * @return Instance de personne supprimée*/
+
+    /**
+     * Removes and returns the element at index i, shifting subsequent elements.
+     *
+     * @param i Index.
+     * @return Instance of removed person.
+     */
     E remove(int i);
-    
 }
