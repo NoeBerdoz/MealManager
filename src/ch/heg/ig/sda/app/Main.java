@@ -49,6 +49,9 @@ public class Main {
                 case 10:
                     userShowTotalNutrients(mealService);
                     break;
+                case 11:
+                    userShowAllMealsSummary(mealService);
+                    break;
                 case 42:
                     userGenerateListOfMeals(mealService);
                     break;
@@ -64,7 +67,7 @@ public class Main {
         System.out.println("\nSelect an action:");
         System.out.println("1. Add a new meal");
         System.out.println("2. Add food to a meal");
-        System.out.println("3. Display meal information");
+        System.out.println("3. Show meal information");
         System.out.println("4. Remove a meal");
         System.out.println("5. Remove food from a meal");
         System.out.println("6. Change a meal name");
@@ -72,6 +75,7 @@ public class Main {
         System.out.println("8. Show foods from each meals");
         System.out.println("9. Show total calories");
         System.out.println("10. Show total nutrients");
+        System.out.println("11. Show all meals information");
         System.out.println("42. Generate a list of meals");
         System.out.println("0. Exit");
     }
@@ -231,6 +235,10 @@ public class Main {
         System.out.println(totalNutrients.getProtein() + " protein");
         System.out.println(totalNutrients.getCarbohydrates() + " carbohydrates");
         System.out.println(totalNutrients.getFats() + " fats");
+    }
+
+    public static void userShowAllMealsSummary(MealService mealService) {
+        System.out.println(mealService.showDataSummaryFromMeals());
     }
 
     public static void userGenerateListOfMeals(MealService mealService) throws InvalidMealNameException {
