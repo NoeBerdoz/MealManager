@@ -63,7 +63,7 @@ public abstract class Meal {
     public void setName(String name) throws InvalidMealNameException {
         // matches letters digits and whitespace characters only
         if (!name.matches("[a-zA-Z0-9\\s]+")) {
-            throw new InvalidMealNameException("Invalid meal name: must contain only letters, digits, and whitespace.");
+            throw new InvalidMealNameException("Invalid meal name: must contain only letters, digits, and whitespace.\n");
         }
         this.name = name;
     }

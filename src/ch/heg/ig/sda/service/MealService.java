@@ -62,7 +62,7 @@ public class MealService implements IMealService {
     @Override
     public String showMeals() throws MealNotFoundException {
         if (getMeals().isEmpty()) {
-            throw new MealNotFoundException("There are no meals to show");
+            throw new MealNotFoundException("There are no meals to show\n");
         }
         // TODO: this is duplicated code from showFood, should get rid of this ugly way
         // TODO Create Exception when no meals available
