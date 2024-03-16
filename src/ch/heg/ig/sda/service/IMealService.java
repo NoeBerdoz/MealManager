@@ -35,6 +35,7 @@ public interface IMealService {
      * Removes a meal from the list of meals.
      *
      * @param mealToRemove The meal to remove.
+     * @throws MealNotFoundException if the meal to remove is not in the list.
      */
     void removeMeal(Meal mealToRemove) throws MealNotFoundException;
 
@@ -69,8 +70,9 @@ public interface IMealService {
      * Displays a list of meals.
      *
      * @return A string representation of the list of meals.
+     * @throws MealNotFoundException if the list of meals is empty.
      */
-    String showMeals();
+    String showMeals() throws MealNotFoundException;
 
     /**
      * Displays a list of foods from all meals.
