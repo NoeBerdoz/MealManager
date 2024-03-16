@@ -37,6 +37,9 @@ public class Main {
                 case 6:
                     userChangeMealName(scanner, mealService);
                     break;
+                case 7:
+                    userReplaceMeal(scanner, mealService);
+                    break;
                 case 0:
                     userExit(scanner);
                 default:
@@ -53,6 +56,7 @@ public class Main {
         System.out.println("4. Remove a meal");
         System.out.println("5. Remove food from a meal");
         System.out.println("6. Change a meal name");
+        System.out.println("7. Replace a Meal");
         System.out.println("0. Exit");
     }
 
@@ -94,6 +98,7 @@ public class Main {
     }
 
     private static void createMeal(Meal meal, String mealName, MealService mealService) throws InvalidMealNameException {
+        // TODO Handle this with the MealService instead
         meal.setName(mealName);
         mealService.addMeal(meal);
     }
@@ -179,6 +184,21 @@ public class Main {
                 System.out.print(error.getMessage());
             }
         } while (!nameChanged);
+    }
+
+    public static void userReplaceMeal(Scanner scanner, MealService mealService) throws MealNotFoundException {
+        System.out.print("Select the meal that you want to replace:\n");
+        System.out.println(mealService.showMeals());
+        int mealToReplaceIndex = getUserChoice(scanner);
+        String mealToReplaceName = mealService.getMeal(mealToReplaceIndex).getName();
+
+        System.out.print("Select the meal that will replace:" + mealToReplaceName + "\n");
+        System.out.println(mealService.showMeals());
+        int mealThatReplaceIndex = getUserChoice(scanner);
+        Meal mealThatReplace = mealService.getMeal(mealThatReplaceIndex);
+
+        mealService.replaceMeal(mealToReplaceIndex, mealThatReplace);
+        System.out.print("Meal: " + mealToReplaceName + " has been replaced by meal: " + mealThatReplace.getName() + "\n");
     }
 
     public static void userExit(Scanner scanner) {
