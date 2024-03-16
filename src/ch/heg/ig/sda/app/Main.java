@@ -31,30 +31,10 @@ public class Main {
 
                     break;
                 case 4:
-                    System.out.print("Select a meal to remove:\n");
-                    System.out.println(mealService.showMeals());
-
-                    int choiceMealToRemove = getUserChoice(scanner);
-                    Meal mealToRemove = mealService.getMeal(choiceMealToRemove);
-                    mealService.removeMeal(mealToRemove);
-
-                    System.out.println("Meal " + "\"" + mealToRemove.getName() + "\"" + " removed successfully\n");
+                    userRemoveMeal(scanner, mealService);
                     break;
                 case 5:
-                    System.out.print("Select a meal to remove food:\n");
-                    System.out.println(mealService.showMeals());
-
-                    int choiceMealToRemoveFood = getUserChoice(scanner);
-                    Meal mealToRemoveFood = mealService.getMeal(choiceMealToRemoveFood);
-
-                    System.out.print("Select a food to remove from " + mealToRemoveFood.getName() + ":\n");
-                    System.out.print(mealToRemoveFood.showFoods());
-
-                    int choiceFoodToRemoveFromMeal = getUserChoice(scanner);
-
-                    Food foodToRemoveFromMeal = mealToRemoveFood.getFood(choiceFoodToRemoveFromMeal);
-                    mealService.removeFoodFromMeal(mealToRemoveFood, foodToRemoveFromMeal);
-                    System.out.println("\"" + foodToRemoveFromMeal.getName() + "\"" + " removed from " + "\"" + mealToRemoveFood.getName() + " successfully\n");
+                    userRemoveFoodFromMeal(scanner, mealService);
                     break;
                 case 6:
                     System.out.print("Select a meal to change the name:\n");
@@ -171,6 +151,32 @@ public class Main {
         System.out.println(mealToView.showDataSummary());
     }
 
+    private static void userRemoveMeal(Scanner scanner, MealService mealService) throws MealNotFoundException {
+        System.out.print("Select a meal to remove:\n");
+        System.out.println(mealService.showMeals());
 
+        int choiceMealToRemove = getUserChoice(scanner);
+        Meal mealToRemove = mealService.getMeal(choiceMealToRemove);
+        mealService.removeMeal(mealToRemove);
+
+        System.out.println("Meal " + "\"" + mealToRemove.getName() + "\"" + " removed successfully\n");
+    }
+
+    private static void userRemoveFoodFromMeal(Scanner scanner, MealService mealService) throws MealNotFoundException {
+        System.out.print("Select a meal to remove food:\n");
+        System.out.println(mealService.showMeals());
+
+        int choiceMealToRemoveFood = getUserChoice(scanner);
+        Meal mealToRemoveFood = mealService.getMeal(choiceMealToRemoveFood);
+
+        System.out.print("Select a food to remove from " + mealToRemoveFood.getName() + ":\n");
+        System.out.print(mealToRemoveFood.showFoods());
+
+        int choiceFoodToRemoveFromMeal = getUserChoice(scanner);
+
+        Food foodToRemoveFromMeal = mealToRemoveFood.getFood(choiceFoodToRemoveFromMeal);
+        mealService.removeFoodFromMeal(mealToRemoveFood, foodToRemoveFromMeal);
+        System.out.println("\"" + foodToRemoveFromMeal.getName() + "\"" + " removed from " + "\"" + mealToRemoveFood.getName() + " successfully\n");
+    }
 
 }
