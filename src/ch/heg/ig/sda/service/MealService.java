@@ -86,10 +86,10 @@ public class MealService implements IMealService {
         for (int indexMeal = 0; indexMeal < getMeals().size(); indexMeal++) {
 
             Meal currentMeal = getMeal(indexMeal);
+            allFoodsNames.append("==================\n");
             allFoodsNames.append(currentMeal.getName());
             allFoodsNames.append(":\n");
             allFoodsNames.append(currentMeal.showFoods());
-            allFoodsNames.append(":\n");
 
         }
         return allFoodsNames.toString();
