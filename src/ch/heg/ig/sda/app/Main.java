@@ -21,41 +21,7 @@ public class Main {
 
             switch (choiceMenu) {
                 case 1:
-                    System.out.print("What type of meal:\n");
-                    System.out.print("1. Breakfast\n");
-                    System.out.print("2. Lunch\n");
-                    System.out.print("3. Dinner\n");
-                    System.out.print("4. Snack\n");
-
-                    int choiceMealType = getUserChoice(scanner);
-
-                    System.out.print("What's the meal name:\n");
-                    String mealName = scanner.nextLine();
-
-                    switch (choiceMealType) {
-                        case 1:
-                            Breakfast breakfast = new Breakfast();
-                            breakfast.setName(mealName);
-                            mealService.addMeal(breakfast);
-                            break;
-                        case 2:
-                            Lunch lunch = new Lunch();
-                            lunch.setName(mealName);
-                            mealService.addMeal(lunch);
-                            break;
-                        case 3:
-                            Dinner dinner = new Dinner();
-                            dinner.setName(mealName);
-                            mealService.addMeal(dinner);
-                            break;
-                        case 4:
-                            Snack snack = new Snack();
-                            snack.setName(mealName);
-                            mealService.addMeal(snack);
-                            break;
-                    }
-
-                    System.out.println("Meal " + "\"" + mealName + "\"" + " created successfully.\n");
+                    userAddMeal(scanner, mealService);
                     break;
                 case 2:
                     System.out.print("Select a meal to add food:\n");
@@ -159,5 +125,41 @@ public class Main {
         int userChoice = scanner.nextInt();
         scanner.nextLine();
         return userChoice;
+    }
+
+    public static void userAddMeal(Scanner scanner, MealService mealService) throws InvalidMealNameException {
+        System.out.print("What type of meal:\n");
+        System.out.print("1. Breakfast\n");
+        System.out.print("2. Lunch\n");
+        System.out.print("3. Dinner\n");
+        System.out.print("4. Snack\n");
+
+        int choiceMealType = getUserChoice(scanner);
+
+        System.out.print("What's the meal name:\n");
+        String mealName = scanner.nextLine();
+
+        switch (choiceMealType) {
+            case 1:
+                createMeal(new Breakfast(), mealName, mealService);
+                break;
+            case 2:
+                createMeal(new Lunch(), mealName, mealService);
+                break;
+            case 3:
+                createMeal(new Dinner(), mealName, mealService);
+                break;
+            case 4:
+                createMeal(new Snack(), mealName, mealService);
+                break;
+        }
+
+        System.out.println("Meal " + "\"" + mealName + "\"" + " created successfully.\n");
+
+    }
+
+    private static void createMeal(Meal meal, String mealName, MealService mealService) throws InvalidMealNameException {
+        meal.setName(mealName);
+        mealService.addMeal(meal);
     }
 }
