@@ -1,12 +1,13 @@
 package ch.heg.ig.sda.app;
 
 import ch.heg.ig.sda.business.*;
+import ch.heg.ig.sda.service.MealNotFoundException;
 import ch.heg.ig.sda.service.MealService;
 
 import java.util.Scanner;
 
 public class Main {
-    public static void main(String[] args) throws InvalidMealNameException {
+    public static void main(String[] args) throws InvalidMealNameException, MealNotFoundException {
         System.out.println("Welcome to your Meal Manager App");
 
         MealService mealService = new MealService();
@@ -16,8 +17,7 @@ public class Main {
         while (true) {
             showMainMenu();
 
-            int choiceMenu = scanner.nextInt();
-            scanner.nextLine();
+            int choiceMenu = getUserChoice(scanner);
 
             switch (choiceMenu) {
                 case 1:
@@ -26,8 +26,8 @@ public class Main {
                     System.out.print("2. Lunch\n");
                     System.out.print("3. Dinner\n");
                     System.out.print("4. Snack\n");
-                    int choiceMealType = scanner.nextInt();
-                    scanner.nextLine();
+
+                    int choiceMealType = getUserChoice(scanner);
 
                     System.out.print("What's the meal name:\n");
                     String mealName = scanner.nextLine();
@@ -60,9 +60,9 @@ public class Main {
                 case 2:
                     System.out.print("Select a meal to add food:\n");
                     System.out.println(mealService.showMeals());
-                    int choiceMealToAddFood = scanner.nextInt();
+
+                    int choiceMealToAddFood = getUserChoice(scanner);
                     Meal mealToAddFoodTo = mealService.getMeal(choiceMealToAddFood);
-                    scanner.nextLine();
 
                     System.out.print("What's the food name:\n");
                     String foodName = scanner.nextLine();
@@ -82,48 +82,44 @@ public class Main {
                     System.out.print("Select a meal to view details:\n");
                     System.out.println(mealService.showMeals());
 
-                    int choiceMealToView = scanner.nextInt();
+                    int choiceMealToView = getUserChoice(scanner);
 
                     Meal mealToView = mealService.getMeal(choiceMealToView);
                     System.out.println(mealToView.showDataSummary());
 
-                    scanner.nextLine();
                     break;
                 case 4:
                     System.out.print("Select a meal to remove:\n");
                     System.out.println(mealService.showMeals());
 
-                    int choiceMealToRemove = scanner.nextInt();
+                    int choiceMealToRemove = getUserChoice(scanner);
                     Meal mealToRemove = mealService.getMeal(choiceMealToRemove);
                     mealService.removeMeal(mealToRemove);
 
                     System.out.println("Meal " + "\"" + mealToRemove.getName() + "\"" + " removed successfully\n");
-                    scanner.nextLine();
                     break;
                 case 5:
                     System.out.print("Select a meal to remove food:\n");
                     System.out.println(mealService.showMeals());
 
-                    int choiceMealToRemoveFood = scanner.nextInt();
+                    int choiceMealToRemoveFood = getUserChoice(scanner);
                     Meal mealToRemoveFood = mealService.getMeal(choiceMealToRemoveFood);
 
                     System.out.print("Select a food to remove from " + mealToRemoveFood.getName() + ":\n");
                     System.out.print(mealToRemoveFood.showFoods());
-                    int choiceFoodToRemoveFromMeal = scanner.nextInt();
+
+                    int choiceFoodToRemoveFromMeal = getUserChoice(scanner);
 
                     Food foodToRemoveFromMeal = mealToRemoveFood.getFood(choiceFoodToRemoveFromMeal);
                     mealService.removeFoodFromMeal(mealToRemoveFood, foodToRemoveFromMeal);
                     System.out.println("\"" + foodToRemoveFromMeal.getName() + "\"" + " removed from " + "\"" + mealToRemoveFood.getName() + " successfully\n");
-
-                    scanner.nextLine();
                     break;
                 case 6:
                     System.out.print("Select a meal to change the name:\n");
                     mealService.showMeals();
                     System.out.println(mealService.showMeals());
 
-                    int choiceMealToChangeName = scanner.nextInt();
-                    scanner.nextLine();
+                    int choiceMealToChangeName = getUserChoice(scanner);
                     Meal mealToChangeName = mealService.getMeal(choiceMealToChangeName);
 
                     System.out.print("Choose a new name for meal " + "\"" + mealToChangeName.getName() + "\"\n");
@@ -157,5 +153,11 @@ public class Main {
         System.out.println("5. Remove food from a meal");
         System.out.println("6. Change a meal name");
         System.out.println("0. Exit");
+    }
+
+    public static int getUserChoice(Scanner scanner) {
+        int userChoice = scanner.nextInt();
+        scanner.nextLine();
+        return userChoice;
     }
 }
