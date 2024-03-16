@@ -36,7 +36,9 @@ public interface IMealService {
      *
      * @param mealToRemove The meal to remove.
      */
-    void removeMeal(Meal mealToRemove);
+    void removeMeal(Meal mealToRemove) throws MealNotFoundException;
+
+    void replaceMeal(int mealToReplaceIndex, Meal mealThatReplace);
 
     /**
      * Changes the name of a meal.

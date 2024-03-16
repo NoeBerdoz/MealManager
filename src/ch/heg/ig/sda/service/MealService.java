@@ -26,14 +26,22 @@ public class MealService implements IMealService {
     }
 
     @Override
-    public void removeMeal(Meal mealToRemove) {
+    public void removeMeal(Meal mealToRemove) throws MealNotFoundException {
+        meals.remove(getMealIndex(mealToRemove));
+    }
+
+    public void replaceMeal(int mealToReplaceIndex, Meal mealThatReplace) {
+        meals.set(mealToReplaceIndex, mealThatReplace);
+    }
+
+    public int getMealIndex(Meal mealToFind) throws MealNotFoundException{
         for (int index = 0; index < meals.size(); index++) {
             Meal meal = meals.get(index);
-            if (meal.equals(mealToRemove)) {
-                meals.remove(index);
-                return;
+            if (meal.equals(mealToFind)) {
+                return index;
             }
         }
+        throw new MealNotFoundException("Meal not found: " + mealToFind.getName());
     }
 
     @Override
