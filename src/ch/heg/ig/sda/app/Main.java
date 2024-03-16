@@ -43,6 +43,9 @@ public class Main {
                 case 8:
                     userShowFoodsFromMeals(mealService);
                     break;
+                case 9:
+                    userShowTotalCalories(mealService);
+                    break;
                 case 42:
                     userGenerateListOfMeals(mealService);
                     break;
@@ -64,6 +67,7 @@ public class Main {
         System.out.println("6. Change a meal name");
         System.out.println("7. Replace a Meal");
         System.out.println("8. Show foods from each meals");
+        System.out.println("9. Show total calories");
         System.out.println("42. Generate a list of meals");
         System.out.println("0. Exit");
     }
@@ -211,6 +215,10 @@ public class Main {
 
     public static void userShowFoodsFromMeals(MealService mealService) {
         System.out.println(mealService.showFoodsFromMeals());
+    }
+
+    public static void userShowTotalCalories(MealService mealService) {
+        System.out.println("Total calories in all meals: " + mealService.getTotalCaloriesFromMeals());
     }
 
     public static void userGenerateListOfMeals(MealService mealService) throws InvalidMealNameException {
