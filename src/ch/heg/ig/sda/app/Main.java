@@ -79,15 +79,15 @@ public class Main {
     }
 
     public static void userAddMeal(Scanner scanner, MealService mealService) throws InvalidMealNameException {
-        System.out.print("What type of meal:\n");
-        System.out.print("1. Breakfast\n");
-        System.out.print("2. Lunch\n");
-        System.out.print("3. Dinner\n");
-        System.out.print("4. Snack\n");
+        System.out.println("What type of meal:");
+        System.out.println("1. Breakfast");
+        System.out.println("2. Lunch");
+        System.out.println("3. Dinner");
+        System.out.println("4. Snack");
 
         int choiceMealType = getUserChoice(scanner);
 
-        System.out.print("What's the meal name:\n");
+        System.out.println("What's the meal name:");
         String mealName = scanner.nextLine();
 
         switch (choiceMealType) {
@@ -105,7 +105,7 @@ public class Main {
                 break;
         }
 
-        System.out.println("Meal " + "\"" + mealName + "\"" + " created successfully.\n");
+        System.out.println("Meal " + "\"" + mealName + "\"" + " created successfully.");
 
     }
 
@@ -116,29 +116,29 @@ public class Main {
     }
 
     private static void userAddFoodToMeal(Scanner scanner, MealService mealService) throws MealNotFoundException {
-        System.out.print("Select a meal to add food:\n");
+        System.out.println("Select a meal to add food:");
         System.out.println(mealService.showMeals());
 
         int choiceMealToAddFood = getUserChoice(scanner);
         Meal mealToAddFoodTo = mealService.getMeal(choiceMealToAddFood);
 
-        System.out.print("What's the food name:\n");
+        System.out.println("What's the food name:");
         String foodName = scanner.nextLine();
 
-        System.out.print("How much protein has " + "\"" + foodName + "\"" + ":\n");
+        System.out.println("How much protein has " + "\"" + foodName + "\"" + ":");
         double proteinAmount = scanner.nextDouble();
-        System.out.print("How much carbohydrate has " + "\"" + foodName + "\"" + ":\n");
+        System.out.println("How much carbohydrate has " + "\"" + foodName + "\"" + ":");
         double carbohydrateAmount = scanner.nextDouble();
-        System.out.print("How much fats has " + "\"" + foodName + "\"" + ":\n");
+        System.out.println("How much fats has " + "\"" + foodName + "\"" + ":");
         double fatAmount = scanner.nextDouble();
 
         Food foodToAdd = new Food(foodName, new Nutrient(proteinAmount, carbohydrateAmount, fatAmount));
         mealService.addFoodToMeal(mealToAddFoodTo, foodToAdd);
-        System.out.println("\"" + foodName + "\"" + " added to " + "\"" + mealToAddFoodTo.getName() + " successfully\n");
+        System.out.println("\"" + foodName + "\"" + " added to " + "\"" + mealToAddFoodTo.getName() + " successfully");
     }
 
     private static void userShowMealSummary(Scanner scanner, MealService mealService) throws MealNotFoundException {
-        System.out.print("Select a meal to view details:\n");
+        System.out.println("Select a meal to view details:");
         System.out.println(mealService.showMeals());
 
         int choiceMealToView = getUserChoice(scanner);
@@ -148,35 +148,35 @@ public class Main {
     }
 
     private static void userRemoveMeal(Scanner scanner, MealService mealService) throws MealNotFoundException {
-        System.out.print("Select a meal to remove:\n");
+        System.out.println("Select a meal to remove:");
         System.out.println(mealService.showMeals());
 
         int choiceMealToRemove = getUserChoice(scanner);
         Meal mealToRemove = mealService.getMeal(choiceMealToRemove);
         mealService.removeMeal(mealToRemove);
 
-        System.out.println("Meal " + "\"" + mealToRemove.getName() + "\"" + " removed successfully\n");
+        System.out.println("Meal " + "\"" + mealToRemove.getName() + "\"" + " removed successfully");
     }
 
     private static void userRemoveFoodFromMeal(Scanner scanner, MealService mealService) throws MealNotFoundException {
-        System.out.print("Select a meal to remove food:\n");
+        System.out.println("Select a meal to remove food:");
         System.out.println(mealService.showMeals());
 
         int choiceMealToRemoveFood = getUserChoice(scanner);
         Meal mealToRemoveFood = mealService.getMeal(choiceMealToRemoveFood);
 
-        System.out.print("Select a food to remove from " + mealToRemoveFood.getName() + ":\n");
+        System.out.println("Select a food to remove from " + mealToRemoveFood.getName() + ":");
         System.out.print(mealToRemoveFood.showFoods());
 
         int choiceFoodToRemoveFromMeal = getUserChoice(scanner);
 
         Food foodToRemoveFromMeal = mealToRemoveFood.getFood(choiceFoodToRemoveFromMeal);
         mealService.removeFoodFromMeal(mealToRemoveFood, foodToRemoveFromMeal);
-        System.out.println("\"" + foodToRemoveFromMeal.getName() + "\"" + " removed from " + "\"" + mealToRemoveFood.getName() + " successfully\n");
+        System.out.println("\"" + foodToRemoveFromMeal.getName() + "\"" + " removed from " + "\"" + mealToRemoveFood.getName() + " successfully");
     }
 
     private static void userChangeMealName(Scanner scanner, MealService mealService) throws MealNotFoundException {
-        System.out.print("Select a meal to change the name:\n");
+        System.out.println("Select a meal to change the name:");
         System.out.println(mealService.showMeals());
 
         int choiceMealToChangeName = getUserChoice(scanner);
@@ -185,7 +185,7 @@ public class Main {
         boolean nameChanged = false;
 
         do {
-            System.out.print("Choose a new name for meal " + "\"" + mealToChangeName.getName() + "\"\n");
+            System.out.println("Choose a new name for meal " + "\"" + mealToChangeName.getName() + "\"");
             String newMealName = scanner.nextLine();
 
             try {
@@ -199,18 +199,18 @@ public class Main {
     }
 
     public static void userReplaceMeal(Scanner scanner, MealService mealService) throws MealNotFoundException {
-        System.out.print("Select the meal that you want to replace:\n");
+        System.out.println("Select the meal that you want to replace:");
         System.out.println(mealService.showMeals());
         int mealToReplaceIndex = getUserChoice(scanner);
         String mealToReplaceName = mealService.getMeal(mealToReplaceIndex).getName();
 
-        System.out.print("Select the meal that will replace:" + mealToReplaceName + "\n");
+        System.out.println("Select the meal that will replace:" + mealToReplaceName);
         System.out.println(mealService.showMeals());
         int mealThatReplaceIndex = getUserChoice(scanner);
         Meal mealThatReplace = mealService.getMeal(mealThatReplaceIndex);
 
         mealService.replaceMeal(mealToReplaceIndex, mealThatReplace);
-        System.out.print("Meal: " + mealToReplaceName + " has been replaced by meal: " + mealThatReplace.getName() + "\n");
+        System.out.println("Meal: " + mealToReplaceName + " has been replaced by meal: " + mealThatReplace.getName());
     }
 
     public static void userShowFoodsFromMeals(MealService mealService) {
