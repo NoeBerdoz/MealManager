@@ -24,34 +24,10 @@ public class Main {
                     userAddMeal(scanner, mealService);
                     break;
                 case 2:
-                    System.out.print("Select a meal to add food:\n");
-                    System.out.println(mealService.showMeals());
-
-                    int choiceMealToAddFood = getUserChoice(scanner);
-                    Meal mealToAddFoodTo = mealService.getMeal(choiceMealToAddFood);
-
-                    System.out.print("What's the food name:\n");
-                    String foodName = scanner.nextLine();
-
-                    System.out.print("How much protein has " + "\"" + foodName + "\"" + ":\n");
-                    double proteinAmount = scanner.nextDouble();
-                    System.out.print("How much carbohydrate has " + "\"" + foodName + "\"" + ":\n");
-                    double carbohydrateAmount = scanner.nextDouble();
-                    System.out.print("How much fats has " + "\"" + foodName + "\"" + ":\n");
-                    double fatAmount = scanner.nextDouble();
-
-                    Food foodToAdd = new Food(foodName, new Nutrient(proteinAmount, carbohydrateAmount, fatAmount));
-                    mealService.addFoodToMeal(mealToAddFoodTo, foodToAdd);
-                    System.out.println("\"" + foodName + "\"" + " added to " + "\"" + mealToAddFoodTo.getName() + " successfully\n");
+                    userAddFoodToMeal(scanner, mealService);
                     break;
                 case 3:
-                    System.out.print("Select a meal to view details:\n");
-                    System.out.println(mealService.showMeals());
-
-                    int choiceMealToView = getUserChoice(scanner);
-
-                    Meal mealToView = mealService.getMeal(choiceMealToView);
-                    System.out.println(mealToView.showDataSummary());
+                    userShowMealSummary(scanner, mealService);
 
                     break;
                 case 4:
@@ -162,4 +138,39 @@ public class Main {
         meal.setName(mealName);
         mealService.addMeal(meal);
     }
+
+    private static void userAddFoodToMeal(Scanner scanner, MealService mealService) throws MealNotFoundException {
+        System.out.print("Select a meal to add food:\n");
+        System.out.println(mealService.showMeals());
+
+        int choiceMealToAddFood = getUserChoice(scanner);
+        Meal mealToAddFoodTo = mealService.getMeal(choiceMealToAddFood);
+
+        System.out.print("What's the food name:\n");
+        String foodName = scanner.nextLine();
+
+        System.out.print("How much protein has " + "\"" + foodName + "\"" + ":\n");
+        double proteinAmount = scanner.nextDouble();
+        System.out.print("How much carbohydrate has " + "\"" + foodName + "\"" + ":\n");
+        double carbohydrateAmount = scanner.nextDouble();
+        System.out.print("How much fats has " + "\"" + foodName + "\"" + ":\n");
+        double fatAmount = scanner.nextDouble();
+
+        Food foodToAdd = new Food(foodName, new Nutrient(proteinAmount, carbohydrateAmount, fatAmount));
+        mealService.addFoodToMeal(mealToAddFoodTo, foodToAdd);
+        System.out.println("\"" + foodName + "\"" + " added to " + "\"" + mealToAddFoodTo.getName() + " successfully\n");
+    }
+
+    private static void userShowMealSummary(Scanner scanner, MealService mealService) throws MealNotFoundException {
+        System.out.print("Select a meal to view details:\n");
+        System.out.println(mealService.showMeals());
+
+        int choiceMealToView = getUserChoice(scanner);
+
+        Meal mealToView = mealService.getMeal(choiceMealToView);
+        System.out.println(mealToView.showDataSummary());
+    }
+
+
+
 }
