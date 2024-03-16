@@ -13,7 +13,6 @@ public class Main {
         MealService mealService = new MealService();
         Scanner scanner = new Scanner(System.in);
 
-        // TODO implement new methods, main is way too long
         while (true) {
             showMainMenu();
 
@@ -28,7 +27,6 @@ public class Main {
                     break;
                 case 3:
                     userShowMealSummary(scanner, mealService);
-
                     break;
                 case 4:
                     userRemoveMeal(scanner, mealService);
