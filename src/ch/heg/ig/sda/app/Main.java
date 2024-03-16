@@ -37,24 +37,7 @@ public class Main {
                     userRemoveFoodFromMeal(scanner, mealService);
                     break;
                 case 6:
-                    System.out.print("Select a meal to change the name:\n");
-                    mealService.showMeals();
-                    System.out.println(mealService.showMeals());
-
-                    int choiceMealToChangeName = getUserChoice(scanner);
-                    Meal mealToChangeName = mealService.getMeal(choiceMealToChangeName);
-
-                    System.out.print("Choose a new name for meal " + "\"" + mealToChangeName.getName() + "\"\n");
-                    String newMealName = scanner.nextLine();
-
-                    try {
-                        mealService.changeMealName(mealToChangeName, newMealName);
-                    } catch (InvalidMealNameException error) {
-                        System.out.print(error.getMessage());
-                        // TODO implement a way for the user to try again
-                        System.out.print("\nGoing back to main menu...");
-                        continue;
-                    }
+                    userChangeMealName(scanner, mealService);
                     break;
                 case 0:
                     System.out.println("Exiting...");
@@ -177,6 +160,29 @@ public class Main {
         Food foodToRemoveFromMeal = mealToRemoveFood.getFood(choiceFoodToRemoveFromMeal);
         mealService.removeFoodFromMeal(mealToRemoveFood, foodToRemoveFromMeal);
         System.out.println("\"" + foodToRemoveFromMeal.getName() + "\"" + " removed from " + "\"" + mealToRemoveFood.getName() + " successfully\n");
+    }
+
+    private static void userChangeMealName(Scanner scanner, MealService mealService) throws MealNotFoundException {
+        System.out.print("Select a meal to change the name:\n");
+        System.out.println(mealService.showMeals());
+
+        int choiceMealToChangeName = getUserChoice(scanner);
+        Meal mealToChangeName = mealService.getMeal(choiceMealToChangeName);
+
+        boolean nameChanged = false;
+
+        do {
+            System.out.print("Choose a new name for meal " + "\"" + mealToChangeName.getName() + "\"\n");
+            String newMealName = scanner.nextLine();
+
+            try {
+                mealService.changeMealName(mealToChangeName, newMealName);
+                nameChanged = true;
+
+            } catch (InvalidMealNameException error) {
+                System.out.print(error.getMessage());
+            }
+        } while (!nameChanged);
     }
 
 }
