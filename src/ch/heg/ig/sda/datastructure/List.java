@@ -23,31 +23,31 @@ public interface List<E> {
      * Returns the element at index i.
      *
      * @param i Index
-     * @return Instance of Person at index i
+     * @return Instance of element at index i
      */
     E get(int i) throws IndexOutOfBoundsException;
 
     /**
-     * Replaces the element at index i with an instance of Person and returns the replaced element.
+     * Replaces the element at index i with the given element and returns the replaced element.
      *
      * @param i       Index
-     * @param element Instance of Person.
+     * @param element Instance of element.
      * @return The replaced element.
      */
     E set(int i, E element);
 
     /**
-     * Inserts an element of type Person at index i, shifting subsequent elements by one index.
+     * Inserts an element at index i, shifting subsequent elements by one index.
      *
-     * @param i       Index where the person is added.
-     * @param element Instance of Person.
+     * @param i       Index where the element is added.
+     * @param element Instance of element.
      */
     void add(int i, E element);
 
     /**
      * Adds an element to the end of the list.
      *
-     * @param element Instance of Person to add.
+     * @param element Instance to add.
      */
     void add(E element);
 
@@ -55,7 +55,7 @@ public interface List<E> {
      * Removes and returns the element at index i, shifting subsequent elements.
      *
      * @param i Index.
-     * @return Instance of removed person.
+     * @return Instance of removed element.
      */
     E remove(int i);
 }
