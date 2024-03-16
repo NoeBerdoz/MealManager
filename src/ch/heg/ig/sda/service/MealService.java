@@ -129,17 +129,13 @@ public class MealService implements IMealService {
         for (int index = 0; index < getMeals().size(); index++) {
             Meal currentMeal = getMeals().get(index);
 
-            // TODO make this responsive
-            String separator = "=========================================";
-
-            // TODO build this with StringBuilder append
-            String summary = "[" + index + "]" + "Meal named " + currentMeal.getName() + " that contains " + currentMeal.getTotalCalories() + " calories\n"
-                    + currentMeal.getTotalProtein() + " protein\n"
-                    + currentMeal.getTotalCarbohydrates() + " carbohydrates\n"
-                    + currentMeal.getTotalFats() + " fats";
-
-            summaryFromMeals.append(separator);
-            summaryFromMeals.append(summary);
+            summaryFromMeals.append("=========================================\n");
+            summaryFromMeals.append("[").append(index).append("]");
+            summaryFromMeals.append(" Meal: ").append(currentMeal.getName());
+            summaryFromMeals.append(" that contains ").append(currentMeal.getTotalCalories()).append(" calories\n");
+            summaryFromMeals.append(currentMeal.getTotalProtein()).append(" protein\n");
+            summaryFromMeals.append(currentMeal.getTotalCarbohydrates()).append(" carbohydrates\n");
+            summaryFromMeals.append(currentMeal.getTotalFats()).append(" fats\n");
         }
         return summaryFromMeals.toString();
     }
