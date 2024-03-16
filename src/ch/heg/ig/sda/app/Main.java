@@ -40,9 +40,7 @@ public class Main {
                     userChangeMealName(scanner, mealService);
                     break;
                 case 0:
-                    System.out.println("Exiting...");
-                    scanner.close();
-                    System.exit(0);
+                    userExit(scanner);
                 default:
                     System.out.println("Invalid choice, try again entering a valid choice number.");
             }
@@ -183,6 +181,12 @@ public class Main {
                 System.out.print(error.getMessage());
             }
         } while (!nameChanged);
+    }
+
+    public static void userExit(Scanner scanner) {
+        System.out.println("Exiting...");
+        scanner.close();
+        System.exit(0);
     }
 
 }
