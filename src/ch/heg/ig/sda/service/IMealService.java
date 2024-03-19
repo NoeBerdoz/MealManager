@@ -28,8 +28,9 @@ public interface IMealService {
      * Adds a meal to the list of meals.
      *
      * @param meal The meal to add.
+     * @param mealName The meal name.
      */
-    void addMeal(Meal meal);
+    void addMeal(Meal meal, String mealName) throws InvalidMealNameException;
 
     /**
      * Removes a meal from the list of meals.
@@ -48,7 +49,7 @@ public interface IMealService {
      * @param newName The new name for the meal.
      * @throws InvalidMealNameException if the new name is invalid.
      */
-    void changeMealName(Meal meal, String newName) throws InvalidMealNameException;
+    void setMealName(Meal meal, String newName) throws InvalidMealNameException;
 
     /**
      * Adds a food to a meal.

@@ -21,7 +21,8 @@ public class MealService implements IMealService {
     }
 
     @Override
-    public void addMeal(Meal meal) {
+    public void addMeal(Meal meal, String mealName) throws InvalidMealNameException {
+        setMealName(meal, mealName);
         meals.add(meal);
     }
 
@@ -45,8 +46,14 @@ public class MealService implements IMealService {
     }
 
     @Override
-    public void changeMealName(Meal meal, String newName) throws InvalidMealNameException {
-        meal.setName(newName);
+    public void setMealName(Meal meal, String newName) throws InvalidMealNameException {
+        try {
+            meal.setName(newName);
+        } catch (InvalidMealNameException error) {
+            // TODO adopt an intelligent logic here
+            //  You have to do a throw new ...
+            throw error;
+        }
     }
 
     @Override

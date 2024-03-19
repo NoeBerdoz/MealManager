@@ -100,27 +100,21 @@ public class Main {
 
         switch (choiceMealType) {
             case 1:
-                createMeal(new Breakfast(), mealName, mealService);
+                mealService.addMeal(new Breakfast(), mealName);
                 break;
             case 2:
-                createMeal(new Lunch(), mealName, mealService);
+                mealService.addMeal(new Lunch(), mealName);
                 break;
             case 3:
-                createMeal(new Dinner(), mealName, mealService);
+                mealService.addMeal(new Dinner(), mealName);
                 break;
             case 4:
-                createMeal(new Snack(), mealName, mealService);
+                mealService.addMeal(new Snack(), mealName);
                 break;
         }
 
         System.out.println("Meal " + "\"" + mealName + "\"" + " created successfully.");
 
-    }
-
-    private static void createMeal(Meal meal, String mealName, MealService mealService) throws InvalidMealNameException {
-        // TODO Handle this with the MealService instead
-        meal.setName(mealName);
-        mealService.addMeal(meal);
     }
 
     private static void userAddFoodToMeal(Scanner scanner, MealService mealService) throws MealNotFoundException {
@@ -197,7 +191,7 @@ public class Main {
             String newMealName = scanner.nextLine();
 
             try {
-                mealService.changeMealName(mealToChangeName, newMealName);
+                mealService.setMealName(mealToChangeName, newMealName);
                 nameChanged = true;
 
             } catch (InvalidMealNameException error) {
@@ -242,55 +236,44 @@ public class Main {
     }
 
     public static void userGenerateListOfMeals(MealService mealService) throws InvalidMealNameException {
+
         Meal fruitSalad = new Breakfast();
-        fruitSalad.setName("FruitSalad");
+        mealService.addMeal(fruitSalad, "Fruit Salad");
+        mealService.addFoodToMeal(fruitSalad, new Food("Apple", new Nutrient(2, 10, 1)));
+        mealService.addFoodToMeal(fruitSalad, new Food("Coconut", new Nutrient(0, 5, 15)));
+        mealService.addFoodToMeal(fruitSalad, new Food("Pineapple", new Nutrient(1, 8, 2)));
 
         Meal chickenMeal = new Lunch();
-        chickenMeal.setName("ChickenMeal");
+        mealService.addMeal(chickenMeal, "Chicken Rice");
+        mealService.addFoodToMeal(chickenMeal, new Food("Grilled Chicken", new Nutrient(25, 0, 3)));
+        mealService.addFoodToMeal(chickenMeal, new Food("Steamed Broccoli", new Nutrient(3, 6, 1)));
+        mealService.addFoodToMeal(chickenMeal, new Food("Brown Rice", new Nutrient(4, 20, 1)));
 
         Meal pastaDish = new Dinner();
-        pastaDish.setName("PastaDish");
+        mealService.addMeal(pastaDish, "Pasta with tomato sauce");
+        mealService.addFoodToMeal(pastaDish, new Food("Spaghetti", new Nutrient(8, 40, 2)));
+        mealService.addFoodToMeal(pastaDish, new Food("Tomato Sauce", new Nutrient(2, 10, 1)));
+        mealService.addFoodToMeal(pastaDish, new Food("Parmesan Cheese", new Nutrient(5, 0, 3)));
 
         Meal yogurtSnack = new Snack();
-        yogurtSnack.setName("YogurtSnack");
-
-        Meal vegetableSalad = new Breakfast();
-        vegetableSalad.setName("VegetableSalad");
-
-        Meal englishBreakfast = new Breakfast();
-        englishBreakfast.setName("EnglishBreakfast");
-
-        fruitSalad.addFood(new Food("Apple", new Nutrient(2, 10, 1)));
-        fruitSalad.addFood(new Food("Coconut", new Nutrient(0, 5, 15)));
-        fruitSalad.addFood(new Food("Pineapple", new Nutrient(1, 8, 2)));
-
-        chickenMeal.addFood(new Food("Grilled Chicken", new Nutrient(25, 0, 3)));
-        chickenMeal.addFood(new Food("Steamed Broccoli", new Nutrient(3, 6, 1)));
-        chickenMeal.addFood(new Food("Brown Rice", new Nutrient(4, 20, 1)));
-
-        pastaDish.addFood(new Food("Spaghetti", new Nutrient(8, 40, 2)));
-        pastaDish.addFood(new Food("Tomato Sauce", new Nutrient(2, 10, 1)));
-        pastaDish.addFood(new Food("Parmesan Cheese", new Nutrient(5, 0, 3)));
-
+        mealService.addMeal(yogurtSnack, "Yogurt Snack");
         yogurtSnack.addFood(new Food("Greek Yogurt", new Nutrient(12, 8, 0)));
         yogurtSnack.addFood(new Food("Blueberries", new Nutrient(1, 5, 0)));
         yogurtSnack.addFood(new Food("Granola", new Nutrient(3, 20, 5)));
 
+        Meal vegetableSalad = new Lunch();
+        mealService.addMeal(vegetableSalad, "Vegetable Salad");
         vegetableSalad.addFood(new Food("Lettuce", new Nutrient(1, 2, 0)));
         vegetableSalad.addFood(new Food("Tomato", new Nutrient(1, 4, 0)));
         vegetableSalad.addFood(new Food("Cucumber", new Nutrient(1, 3, 0)));
 
+        Meal englishBreakfast = new Breakfast();
+        mealService.addMeal(englishBreakfast, "English Breakfast");
         englishBreakfast.addFood(new Food("Sausages", new Nutrient(15, 5, 10)));
         englishBreakfast.addFood(new Food("Bacon", new Nutrient(10, 3, 8)));
         englishBreakfast.addFood(new Food("Eggs", new Nutrient(7, 1, 5)));
         englishBreakfast.addFood(new Food("Toast", new Nutrient(2, 8, 1)));
 
-        mealService.addMeal(fruitSalad);
-        mealService.addMeal(chickenMeal);
-        mealService.addMeal(pastaDish);
-        mealService.addMeal(yogurtSnack);
-        mealService.addMeal(vegetableSalad);
-        mealService.addMeal(englishBreakfast);
     }
 
     public static void userExit(Scanner scanner) {
