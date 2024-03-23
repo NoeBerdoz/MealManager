@@ -95,26 +95,31 @@ public class Main {
 
         int choiceMealType = getUserChoice(scanner);
 
-        System.out.println("What's the meal name:");
-        String mealName = scanner.nextLine();
-
-        switch (choiceMealType) {
-            case 1:
-                mealService.addMeal(new Breakfast(), mealName);
-                break;
-            case 2:
-                mealService.addMeal(new Lunch(), mealName);
-                break;
-            case 3:
-                mealService.addMeal(new Dinner(), mealName);
-                break;
-            case 4:
-                mealService.addMeal(new Snack(), mealName);
-                break;
-        }
-
-        System.out.println("Meal " + "\"" + mealName + "\"" + " created successfully.");
-
+        boolean mealAdded = false;
+        do {
+            System.out.println("What's the meal name:");
+            String mealName = scanner.nextLine();
+            try {
+                switch (choiceMealType) {
+                    case 1:
+                        mealService.addMeal(new Breakfast(), mealName);
+                        break;
+                    case 2:
+                        mealService.addMeal(new Lunch(), mealName);
+                        break;
+                    case 3:
+                        mealService.addMeal(new Dinner(), mealName);
+                        break;
+                    case 4:
+                        mealService.addMeal(new Snack(), mealName);
+                        break;
+                }
+                System.out.println("Meal " + "\"" + mealName + "\"" + " added successfully.");
+                mealAdded = true;
+            } catch(InvalidMealNameException error) {
+                System.out.print(error.getMessage());
+            }
+        } while (!mealAdded);
     }
 
     private static void userAddFoodToMeal(Scanner scanner, MealService mealService) throws MealNotFoundException {

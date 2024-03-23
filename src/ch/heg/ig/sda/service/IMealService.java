@@ -29,6 +29,7 @@ public interface IMealService {
      *
      * @param meal The meal to add.
      * @param mealName The meal name.
+     * @throws InvalidMealNameException if the new name is invalid.
      */
     void addMeal(Meal meal, String mealName) throws InvalidMealNameException;
 
