@@ -86,7 +86,7 @@ public class Main {
         return userChoice;
     }
 
-    public static void userAddMeal(Scanner scanner, MealService mealService) throws InvalidMealNameException {
+    public static void userAddMeal(Scanner scanner, MealService mealService) {
         System.out.println("What type of meal:");
         System.out.println("1. Breakfast");
         System.out.println("2. Lunch");
