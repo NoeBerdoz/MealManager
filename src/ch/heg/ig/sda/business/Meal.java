@@ -27,6 +27,13 @@ public abstract class Meal {
     }
 
     /**
+     * Gets the type of the meal
+     *
+     * @return the type of the meal
+     */
+    public abstract String getType();
+
+    /**
      * Gets the name of the meal.
      *
      * @return The name of the meal.
@@ -185,10 +192,19 @@ public abstract class Meal {
      * @return A string representation of the data summary of the meal.
      */
     public String showDataSummary() {
-        // TODO build this with StringBuilder
-        return "Meal named " + getName() + " that contains " + getTotalCalories() + " calories\n"
-                + getTotalProtein() + " protein\n"
-                + getTotalCarbohydrates() + " carbohydrates\n"
-                + getTotalFats() + " fats\n";
+        StringBuilder summary = new StringBuilder();
+        summary.append(getType())
+                .append(" named ")
+                .append(" that contains ")
+                .append(getTotalCalories())
+                .append(" calories\n")
+                .append(getTotalProtein())
+                .append(" protein\n")
+                .append(getTotalCarbohydrates())
+                .append(" carbohydrates\n")
+                .append(getTotalFats())
+                .append(" fats\n");
+
+        return summary.toString();
     }
 }

@@ -7,10 +7,8 @@ public class Dinner extends Meal {
     }
 
     @Override
-    public String showDataSummary() {
-        return "Dinner named " + getName() + " that contains " + getTotalCalories() + " calories\n"
-                + getTotalProtein() + " protein\n"
-                + getTotalCarbohydrates() + " carbohydrates\n"
-                + getTotalFats() + " fats";
+    public String getType() {
+        return "Dinner";
     }
+
 }

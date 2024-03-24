@@ -20,6 +20,10 @@ public class MealService implements IMealService {
         return instance;
     }
 
+    public String getMealType(Meal meal) {
+        return meal.getType();
+    }
+
     @Override
     public ArrayList<Meal> getMeals() {
         return meals;
@@ -149,7 +153,7 @@ public class MealService implements IMealService {
 
             summaryFromMeals.append("=========================================\n");
             summaryFromMeals.append("[").append(index).append("]");
-            summaryFromMeals.append(" Meal: ").append(currentMeal.getName());
+            summaryFromMeals.append(currentMeal.getType()).append(": ").append(currentMeal.getName());
             summaryFromMeals.append(" that contains ").append(currentMeal.getTotalCalories()).append(" calories\n");
             summaryFromMeals.append(currentMeal.getTotalProtein()).append(" protein\n");
             summaryFromMeals.append(currentMeal.getTotalCarbohydrates()).append(" carbohydrates\n");

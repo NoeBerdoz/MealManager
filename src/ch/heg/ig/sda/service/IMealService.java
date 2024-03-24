@@ -10,10 +10,18 @@ import ch.heg.ig.sda.datastructure.ArrayList;
 public interface IMealService {
 
     /**
-     * Gets the list of meals.
+     * Gets the meal type
      *
-     * @return The list of meals.
+     * @param meal the meal to get the type
+     * @return the meal type
      */
+    String getMealType(Meal meal);
+
+        /**
+         * Gets the list of meals.
+         *
+         * @return The list of meals.
+         */
     ArrayList<Meal> getMeals();
 
     /**

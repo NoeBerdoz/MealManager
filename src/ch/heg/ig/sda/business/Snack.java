@@ -6,11 +6,8 @@ public class Snack extends Meal {
 
     }
 
-    @Override
-    public String showDataSummary() {
-        return "Snack named " + getName() + " that contains " + getTotalCalories() + " calories\n"
-                + getTotalProtein() + " protein\n"
-                + getTotalCarbohydrates() + " carbohydrates\n"
-                + getTotalFats() + " fats";
+    public String getType() {
+        return "Snack";
     }
+
 }

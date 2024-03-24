@@ -208,15 +208,24 @@ public class Main {
         System.out.println("Select the meal that you want to replace:");
         System.out.println(mealService.showMeals());
         int mealToReplaceIndex = getUserChoice(scanner);
-        String mealToReplaceName = mealService.getMeal(mealToReplaceIndex).getName();
+        Meal mealToReplace = mealService.getMeal(mealToReplaceIndex);
 
-        System.out.println("Select the meal that will replace:" + mealToReplaceName);
+        System.out.println("Select the meal that will replace:" + mealToReplace.getName());
         System.out.println(mealService.showMeals());
         int mealThatReplaceIndex = getUserChoice(scanner);
         Meal mealThatReplace = mealService.getMeal(mealThatReplaceIndex);
 
         mealService.replaceMeal(mealToReplaceIndex, mealThatReplace);
-        System.out.println("Meal: " + mealToReplaceName + " has been replaced by meal: " + mealThatReplace.getName());
+
+        StringBuilder mealReplacementOutput = new StringBuilder();
+        mealReplacementOutput
+                .append(mealToReplace.getType())
+                .append(mealToReplace.getName())
+                .append(" has been replaced by ")
+                .append(mealThatReplace.getType())
+                .append(mealThatReplace.getName());
+
+        System.out.println(mealReplacementOutput.toString());
     }
 
     public static void userShowFoodsFromMeals(MealService mealService) {
