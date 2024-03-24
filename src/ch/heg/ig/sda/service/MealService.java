@@ -5,10 +5,19 @@ import ch.heg.ig.sda.datastructure.ArrayList;
 
 public class MealService implements IMealService {
 
+    private static MealService instance;
+
     private ArrayList<Meal> meals;
 
-    public MealService() {
+    private MealService() {
         this.meals = new ArrayList<>();
+    }
+
+    public static MealService getInstance() {
+        if (instance == null) {
+            instance =  new MealService();
+        }
+        return instance;
     }
 
     @Override

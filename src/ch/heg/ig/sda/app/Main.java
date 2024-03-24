@@ -10,7 +10,7 @@ public class Main {
     public static void main(String[] args) throws InvalidMealNameException, MealNotFoundException {
         System.out.println("Welcome to your Meal Manager App");
 
-        MealService mealService = new MealService();
+        MealService mealService = MealService.getInstance();
         Scanner scanner = new Scanner(System.in);
 
         while (true) {
