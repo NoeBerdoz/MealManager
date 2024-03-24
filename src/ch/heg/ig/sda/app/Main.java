@@ -225,7 +225,7 @@ public class Main {
                 .append(mealThatReplace.getType())
                 .append(mealThatReplace.getName());
 
-        System.out.println(mealReplacementOutput.toString());
+        System.out.println(mealReplacementOutput);
     }
 
     public static void userShowFoodsFromMeals(MealService mealService) {
