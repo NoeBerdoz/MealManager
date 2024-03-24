@@ -9,14 +9,6 @@ import ch.heg.ig.sda.datastructure.List;
  */
 public interface IMealService {
 
-    /**
-     * Gets the meal type
-     *
-     * @param meal the meal to get the type
-     * @return the meal type
-     */
-    String getMealType(Meal meal);
-
         /**
          * Gets the list of meals.
          *

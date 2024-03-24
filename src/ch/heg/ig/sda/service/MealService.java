@@ -21,10 +21,6 @@ public class MealService implements IMealService {
         return instance;
     }
 
-    public String getMealType(Meal meal) {
-        return meal.getType();
-    }
-
     @Override
     public List<Meal> getMeals() {
         return meals;
