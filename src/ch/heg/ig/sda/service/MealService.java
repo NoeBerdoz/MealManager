@@ -69,8 +69,8 @@ public class MealService implements IMealService {
     }
 
     @Override
-    public void addFoodToMeal(Meal meal, Food food) {
-        meal.addFood(food);
+    public void addFoodToMeal(Meal meal, String foodName, double proteinAmount, double carbohydratesAmount, double fatsAmount) {
+        meal.addFood(foodName, proteinAmount, carbohydratesAmount, fatsAmount);
     }
 
     @Override
@@ -83,8 +83,7 @@ public class MealService implements IMealService {
         if (getMeals().isEmpty()) {
             throw new MealNotFoundException("There are no meals to show\n");
         }
-        // TODO: this is duplicated code from showFood, should get rid of this ugly way
-        // TODO Create Exception when no meals available
+
         StringBuilder mealNames = new StringBuilder();
         for (int index = 0; index < getMeals().size(); index++) {
             mealNames.append(index);

@@ -56,9 +56,12 @@ public interface IMealService {
      * Adds a food to a meal.
      *
      * @param meal The meal to add the food to.
-     * @param food The food to add.
+     * @param foodName The food name to add.
+     * @param proteinAmount The amount of protein of the food.
+     * @param carbohydratesAmount The amount of carbohydrates of the food.
+     * @param fatsAmount The amount of fats of the food.
      */
-    void addFoodToMeal(Meal meal, Food food);
+    void addFoodToMeal(Meal meal, String foodName, double proteinAmount, double carbohydratesAmount, double fatsAmount);
 
     /**
      * Removes a food from a meal.

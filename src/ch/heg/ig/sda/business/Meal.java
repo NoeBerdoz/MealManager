@@ -71,10 +71,22 @@ public abstract class Meal {
     /**
      * Adds a food to the meal.
      *
-     * @param food The food to add.
+     * @param foodName The food name to add.
+     * @param proteinAmount The amount of protein of the food.
+     * @param carbohydratesAmount The amount of carbohydrates of the food.
+     * @param fatsAmount The amount of fats of the food.
      */
-    public void addFood(Food food) {
-        foods.add(food);
+    public void addFood(String foodName, double proteinAmount, double carbohydratesAmount, double fatsAmount) {
+        Food newFood = new Food();
+        newFood.setName(foodName);
+
+        Nutrient newNutrient = new Nutrient();
+        newNutrient.setProtein(proteinAmount);
+        newNutrient.setCarbohydrates(carbohydratesAmount);
+        newNutrient.setFats(fatsAmount);
+        newFood.setNutrients(newNutrient);
+
+        foods.add(newFood);
     }
 
     /**

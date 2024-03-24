@@ -139,8 +139,7 @@ public class Main {
         System.out.println("How much fats has " + "\"" + foodName + "\"" + ":");
         double fatAmount = scanner.nextDouble();
 
-        Food foodToAdd = new Food(foodName, new Nutrient(proteinAmount, carbohydrateAmount, fatAmount));
-        mealService.addFoodToMeal(mealToAddFoodTo, foodToAdd);
+        mealService.addFoodToMeal(mealToAddFoodTo, foodName, proteinAmount, carbohydrateAmount, fatAmount);
         System.out.println("\"" + foodName + "\"" + " added to " + "\"" + mealToAddFoodTo.getName() + " successfully");
     }
 
@@ -244,40 +243,40 @@ public class Main {
 
         Meal fruitSalad = new Breakfast();
         mealService.addMeal(fruitSalad, "Fruit Salad");
-        mealService.addFoodToMeal(fruitSalad, new Food("Apple", new Nutrient(2, 10, 1)));
-        mealService.addFoodToMeal(fruitSalad, new Food("Coconut", new Nutrient(0, 5, 15)));
-        mealService.addFoodToMeal(fruitSalad, new Food("Pineapple", new Nutrient(1, 8, 2)));
+        mealService.addFoodToMeal(fruitSalad, "Apple", 2, 10, 1);
+        mealService.addFoodToMeal(fruitSalad, "Coconut", 0, 5, 15);
+        mealService.addFoodToMeal(fruitSalad, "Pineapple", 1, 8, 2);
 
         Meal chickenMeal = new Lunch();
         mealService.addMeal(chickenMeal, "Chicken Rice");
-        mealService.addFoodToMeal(chickenMeal, new Food("Grilled Chicken", new Nutrient(25, 0, 3)));
-        mealService.addFoodToMeal(chickenMeal, new Food("Steamed Broccoli", new Nutrient(3, 6, 1)));
-        mealService.addFoodToMeal(chickenMeal, new Food("Brown Rice", new Nutrient(4, 20, 1)));
+        mealService.addFoodToMeal(chickenMeal, "Grilled Chicken", 25, 0, 3);
+        mealService.addFoodToMeal(chickenMeal, "Steamed Broccoli", 3, 6, 1);
+        mealService.addFoodToMeal(chickenMeal, "Brown Rice", 4, 20, 1);
 
         Meal pastaDish = new Dinner();
         mealService.addMeal(pastaDish, "Pasta with tomato sauce");
-        mealService.addFoodToMeal(pastaDish, new Food("Spaghetti", new Nutrient(8, 40, 2)));
-        mealService.addFoodToMeal(pastaDish, new Food("Tomato Sauce", new Nutrient(2, 10, 1)));
-        mealService.addFoodToMeal(pastaDish, new Food("Parmesan Cheese", new Nutrient(5, 0, 3)));
+        mealService.addFoodToMeal(pastaDish, "Spaghetti", 8, 40, 2);
+        mealService.addFoodToMeal(pastaDish, "Tomato Sauce",2, 10, 1);
+        mealService.addFoodToMeal(pastaDish, "Parmesan Cheese",5, 0, 3);
 
         Meal yogurtSnack = new Snack();
         mealService.addMeal(yogurtSnack, "Yogurt Snack");
-        yogurtSnack.addFood(new Food("Greek Yogurt", new Nutrient(12, 8, 0)));
-        yogurtSnack.addFood(new Food("Blueberries", new Nutrient(1, 5, 0)));
-        yogurtSnack.addFood(new Food("Granola", new Nutrient(3, 20, 5)));
+        yogurtSnack.addFood("Greek Yogurt", 12, 8, 0);
+        yogurtSnack.addFood("Blueberries", 1, 5, 0);
+        yogurtSnack.addFood("Granola", 3, 20, 5);
 
         Meal vegetableSalad = new Lunch();
         mealService.addMeal(vegetableSalad, "Vegetable Salad");
-        vegetableSalad.addFood(new Food("Lettuce", new Nutrient(1, 2, 0)));
-        vegetableSalad.addFood(new Food("Tomato", new Nutrient(1, 4, 0)));
-        vegetableSalad.addFood(new Food("Cucumber", new Nutrient(1, 3, 0)));
+        vegetableSalad.addFood("Lettuce", 1, 2, 0);
+        vegetableSalad.addFood("Tomato", 1, 4, 0);
+        vegetableSalad.addFood("Cucumber", 1, 3, 0);
 
         Meal englishBreakfast = new Breakfast();
         mealService.addMeal(englishBreakfast, "English Breakfast");
-        englishBreakfast.addFood(new Food("Sausages", new Nutrient(15, 5, 10)));
-        englishBreakfast.addFood(new Food("Bacon", new Nutrient(10, 3, 8)));
-        englishBreakfast.addFood(new Food("Eggs", new Nutrient(7, 1, 5)));
-        englishBreakfast.addFood(new Food("Toast", new Nutrient(2, 8, 1)));
+        englishBreakfast.addFood("Sausages", 15, 5, 10);
+        englishBreakfast.addFood("Bacon", 10, 3, 8);
+        englishBreakfast.addFood("Eggs", 7, 1, 5);
+        englishBreakfast.addFood("Toast", 2, 8, 1);
 
     }
 

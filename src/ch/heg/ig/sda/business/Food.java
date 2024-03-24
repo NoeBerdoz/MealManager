@@ -4,9 +4,8 @@ public class Food {
     private String name;
     private Nutrient nutrients;
 
-    public Food(String name, Nutrient nutrients) {
-        this.name = name;
-        this.nutrients = nutrients;
+    public Food() {
+
     }
 
     public String getName() {

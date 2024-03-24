@@ -8,6 +8,10 @@ public class Nutrient {
     private double carbohydrates;
     private double fats;
 
+    public Nutrient() {
+
+    }
+
     public Nutrient(double protein, double carbohydrates, double fats) {
         this.protein = protein;
         this.carbohydrates = carbohydrates;
