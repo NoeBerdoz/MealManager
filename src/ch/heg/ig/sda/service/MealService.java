@@ -2,12 +2,13 @@ package ch.heg.ig.sda.service;
 
 import ch.heg.ig.sda.business.*;
 import ch.heg.ig.sda.datastructure.ArrayList;
+import ch.heg.ig.sda.datastructure.List;
 
 public class MealService implements IMealService {
 
     private static MealService instance;
 
-    private ArrayList<Meal> meals;
+    private List<Meal> meals;
 
     private MealService() {
         this.meals = new ArrayList<>();
@@ -25,7 +26,7 @@ public class MealService implements IMealService {
     }
 
     @Override
-    public ArrayList<Meal> getMeals() {
+    public List<Meal> getMeals() {
         return meals;
     }
 
@@ -104,6 +105,7 @@ public class MealService implements IMealService {
 
     @Override
     public String showFoodsFromMeals() {
+
         StringBuilder allFoodsNames = new StringBuilder();
         for (int indexMeal = 0; indexMeal < getMeals().size(); indexMeal++) {
 
@@ -128,7 +130,6 @@ public class MealService implements IMealService {
 
     @Override
     public Nutrient getTotalNutrientsFromMeals() {
-        // TODO: this is duplicated code from getTotalNutrients, should get rid of this ugly way
 
         double totalProteinFromMeals = 0;
         double totalCarbohydrateFromMeals = 0;

@@ -1,7 +1,7 @@
 package ch.heg.ig.sda.service;
 
 import ch.heg.ig.sda.business.*;
-import ch.heg.ig.sda.datastructure.ArrayList;
+import ch.heg.ig.sda.datastructure.List;
 
 /**
  * Interface responsible for managing meals.
@@ -22,7 +22,7 @@ public interface IMealService {
          *
          * @return The list of meals.
          */
-    ArrayList<Meal> getMeals();
+    List<Meal> getMeals();
 
     /**
      * Gets the meal at the specified index.
