@@ -16,7 +16,7 @@ public class MealService implements IMealService {
 
     public static MealService getInstance() {
         if (instance == null) {
-            instance =  new MealService();
+            instance = new MealService();
         }
         return instance;
     }
@@ -38,7 +38,6 @@ public class MealService implements IMealService {
         } catch (InvalidMealNameException error) {
             throw new MealServiceInvalidMealNameException(error.getMessage());
         }
-
     }
 
     @Override
@@ -50,7 +49,7 @@ public class MealService implements IMealService {
         meals.set(mealToReplaceIndex, mealThatReplace);
     }
 
-    public int getMealIndex(Meal mealToFind) throws MealNotFoundException{
+    public int getMealIndex(Meal mealToFind) throws MealNotFoundException {
         for (int index = 0; index < meals.size(); index++) {
             Meal meal = meals.get(index);
             if (meal.equals(mealToFind)) {

@@ -5,15 +5,16 @@ import ch.heg.ig.sda.datastructure.List;
 
 /**
  * Interface responsible for managing meals.
+ *
  * @author NoeBerdoz
  */
 public interface IMealService {
 
-        /**
-         * Gets the list of meals.
-         *
-         * @return The list of meals.
-         */
+    /**
+     * Gets the list of meals.
+     *
+     * @return The list of meals.
+     */
     List<Meal> getMeals();
 
     /**
@@ -27,7 +28,7 @@ public interface IMealService {
     /**
      * Adds a meal to the list of meals.
      *
-     * @param meal The meal to add.
+     * @param meal     The meal to add.
      * @param mealName The meal name.
      * @throws InvalidMealNameException if the new name is invalid.
      */
@@ -46,7 +47,7 @@ public interface IMealService {
     /**
      * Changes the name of a meal.
      *
-     * @param meal The meal to change the name of.
+     * @param meal    The meal to change the name of.
      * @param newName The new name for the meal.
      * @throws InvalidMealNameException if the new name is invalid.
      */
@@ -55,11 +56,11 @@ public interface IMealService {
     /**
      * Adds a food to a meal.
      *
-     * @param meal The meal to add the food to.
-     * @param foodName The food name to add.
-     * @param proteinAmount The amount of protein of the food.
+     * @param meal                The meal to add the food to.
+     * @param foodName            The food name to add.
+     * @param proteinAmount       The amount of protein of the food.
      * @param carbohydratesAmount The amount of carbohydrates of the food.
-     * @param fatsAmount The amount of fats of the food.
+     * @param fatsAmount          The amount of fats of the food.
      */
     void addFoodToMeal(Meal meal, String foodName, double proteinAmount, double carbohydratesAmount, double fatsAmount);
 

@@ -116,7 +116,7 @@ public class Main {
                 }
                 System.out.println("Meal " + "\"" + mealName + "\"" + " added successfully.");
                 mealAdded = true;
-            } catch(InvalidMealNameException error) {
+            } catch (InvalidMealNameException error) {
                 System.out.print(error.getMessage());
             }
         } while (!mealAdded);
@@ -265,8 +265,8 @@ public class Main {
         Meal pastaDish = new Dinner();
         mealService.addMeal(pastaDish, "Pasta with tomato sauce");
         mealService.addFoodToMeal(pastaDish, "Spaghetti", 8, 40, 2);
-        mealService.addFoodToMeal(pastaDish, "Tomato Sauce",2, 10, 1);
-        mealService.addFoodToMeal(pastaDish, "Parmesan Cheese",5, 0, 3);
+        mealService.addFoodToMeal(pastaDish, "Tomato Sauce", 2, 10, 1);
+        mealService.addFoodToMeal(pastaDish, "Parmesan Cheese", 5, 0, 3);
 
         Meal yogurtSnack = new Snack();
         mealService.addMeal(yogurtSnack, "Yogurt Snack");
